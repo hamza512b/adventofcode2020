@@ -1,4 +1,4 @@
 #!/bin/sh
 
-node "./index.js" "$@"
+node "./part2.js" "$@"
 exit $?
