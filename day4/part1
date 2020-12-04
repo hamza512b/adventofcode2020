@@ -1,0 +1,4 @@
+#!/bin/sh
+
+node "./part1.js" "$@"
+exit $?
