@@ -46,15 +46,15 @@ function main(lines) {
             const value = item[1];
             let valid = false;
             switch (key) {
-                case "byr":
+                case "byr": // Ok
                     if (1920 <= +value && +value <= 2002) valid = true;
                     if (valid) byr++;
                     break;
-                case "iyr":
+                case "iyr": // Ok
                     if (2010 <= +value && +value <= 2020) valid = true;
                     if (valid) iyr++;
                     break;
-                case "eyr":
+                case "eyr": // Ok
                     if (2020 <= +value && +value <= 2030) valid = true;
                     if (valid) eyr++;
                     break;
@@ -66,8 +66,8 @@ function main(lines) {
             
                     break;
                 case "hcl":
-                    const regx = /[0-9A-Fa-f]{6}/g;
-                    valid = regx.test(value.replace("#"));
+                    const regx = /#[0-9A-Fa-f]{6}/g;
+                    valid = regx.test(value);
                     if (valid) {
                         hcl++;
                     }
