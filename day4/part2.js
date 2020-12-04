@@ -61,9 +61,9 @@ function main(lines) {
                 case "hgt":
                     if (value.includes("cm") && (150 <= parseInt(value) <= 193)) valid = true;
                     else if (value.includes("in") && (59 <= parseInt(value) <= 76)) valid = true;
-                    
+
                     if (valid) hgt++;
-            
+
                     break;
                 case "hcl":
                     const regx = /#[0-9A-Fa-f]{6}/g;
@@ -80,9 +80,9 @@ function main(lines) {
                     }
                     break;
                 case "pid":
-                    if (value.length === 9){
-                         valid = true;
-                         pid++;
+                    if (value.length === 9) {
+                        valid = true;
+                        pid++;
                     }
                     break;
                 case "cid":
@@ -93,7 +93,12 @@ function main(lines) {
             if (valid) valids.push(valid)
         }));
 
-        if (valids.length >= 7) valid++;
+        if (valids.length >= 7) {
+            valid++;
+            console.log();
+            console.log(lines[j]);
+            console.log("Valid");
+        }
     }
 
 
