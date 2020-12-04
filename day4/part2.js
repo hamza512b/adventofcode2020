@@ -59,14 +59,14 @@ function main(lines) {
                     if (valid) eyr++;
                     break;
                 case "hgt":
-                    if (value.includes("cm") && (150 <= parseInt(value) <= 193)) valid = true;
-                    else if (value.includes("in") && (59 <= parseInt(value) <= 76)) valid = true;
+                    if (value.includes("cm") && (150 <= parseInt(value) && parseInt(value) <= 193)) valid = true;
+                    else if (value.includes("in") && (59 <= parseInt(value) && parseInt(value) <= 76)) valid = true;
 
                     if (valid) hgt++;
 
                     break;
                 case "hcl":
-                    const regx = /#[0-9A-Fa-f]{6}/g;
+                    const regx = /#([0-9A-Fa-f]{6})/g;
                     valid = regx.test(value);
                     if (valid) {
                         hcl++;
@@ -80,7 +80,7 @@ function main(lines) {
                     }
                     break;
                 case "pid":
-                    if (value.length === 9) {
+                    if (value.length === 9 && !isNaN(parseInt(value))) {
                         valid = true;
                         pid++;
                     }
@@ -93,20 +93,15 @@ function main(lines) {
             if (valid) valids.push(valid)
         }));
 
-        if (valids.length >= 7) {
-            valid++;
-            console.log();
-            console.log(lines[j]);
-            console.log("Valid");
-        }
+        if (valids.length >= 7) valid++;
     }
 
+    // // Stats
+    // console.log("byr: " + byr, "iyr: " + iyr, "eyr: " + eyr, "hgt: " + hgt, "hcl: " + hcl, "ecl: " + ecl, "pid: " + pid, "cid: " + cid);
 
     console.log(valid);
 
 
-    // Stats
-    console.log("byr: " + byr, "iyr: " + iyr, "eyr: " + eyr, "hgt: " + hgt, "hcl: " + hcl, "ecl: " + ecl, "pid: " + pid, "cid: " + cid);
 }
 
 
